@@ -1,113 +1,3276 @@
-import Image from "next/image";
+import {
+	Table,
+	TableBody,
+	TableCaption,
+	TableCell,
+	TableFooter,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from '@/components/ui/table';
 
+const bookmakerMap: Record<string, string> = {
+	betonlineag: 'BetOnline.ag ',
+	betmgm: 'BetMGM',
+	betrivers: 'BetRivers',
+	betus: 'BetUS',
+	bovada: 'Bovada',
+	williamhill_us: 'Caesars',
+	draftkings: 'DraftKings',
+	fanduel: 'FanDuel',
+	lowvig: 'LowVig.ag',
+	mybookieag: 'MyBookie.ag',
+	superbook: 'SuperBook',
+	unibet_us: 'Unibet',
+	wynnbet: 'WynnBET',
+};
+const data = [
+	{
+		id: '986321dd7daaf18c2456c62649a7e045',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T17:11:00Z',
+		home_team: 'Minnesota Twins',
+		away_team: 'Kansas City Royals',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -180,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -180,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -133,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -190,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 150,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -175,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Kansas City Royals',
+								price: -155,
+							},
+							{
+								name: 'Minnesota Twins',
+								price: 120,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '91df4266f452f6892b6d266d6e1aa17f',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T19:41:00Z',
+		home_team: 'Arizona Diamondbacks',
+		away_team: 'Colorado Rockies',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -198,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 166,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -185,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 169,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -185,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 169,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -198,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 164,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -196,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 165,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -205,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 170,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -210,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 170,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -186,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 166,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -215,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 180,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Arizona Diamondbacks',
+								price: -198,
+							},
+							{
+								name: 'Colorado Rockies',
+								price: 163,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '0639b130bf6e1cb53dbaa6f666f2aba7',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T20:11:00Z',
+		home_team: 'San Diego Padres',
+		away_team: 'Pittsburgh Pirates',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 120,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -142,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 121,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -132,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 121,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -132,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 120,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -142,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 111,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -132,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 118,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 115,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -135,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 122,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -132,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 117,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Pittsburgh Pirates',
+								price: 121,
+							},
+							{
+								name: 'San Diego Padres',
+								price: -144,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'e9e88ae4fc97b8f8bb29552d7d42d610',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:11:00Z',
+		home_team: 'Boston Red Sox',
+		away_team: 'Texas Rangers',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -134,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 116,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -135,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 115,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -127,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 117,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -127,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 117,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -140,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 120,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -133,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 113,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -133,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 111,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -143,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 123,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -135,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 114,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Boston Red Sox',
+								price: -129,
+							},
+							{
+								name: 'Texas Rangers',
+								price: 119,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'a93aebc3c41f48e1661e2b21b15aff59',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:36:00Z',
+		home_team: 'Baltimore Orioles',
+		away_team: 'Washington Nationals',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -172,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 144,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -163,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 149,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -163,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 149,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -170,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 142,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -165,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -164,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 139,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -175,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 145,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -165,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 145,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -175,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 145,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Baltimore Orioles',
+								price: -172,
+							},
+							{
+								name: 'Washington Nationals',
+								price: 142,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'cc4db8a53745306dda0f01bcca1c48ba',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:40:00Z',
+		home_team: 'Detroit Tigers',
+		away_team: 'Seattle Mariners',
+		bookmakers: [
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 126,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 126,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 118,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 122,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -144,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 125,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 116,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 120,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 121,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -144,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 123,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -143,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Detroit Tigers',
+								price: 120,
+							},
+							{
+								name: 'Seattle Mariners',
+								price: -142,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'c39ae7e04d5de9920ec9d2e9a0121a39',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:41:00Z',
+		home_team: 'Cleveland Guardians',
+		away_team: 'Chicago Cubs',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 120,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -142,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 126,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 126,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -137,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 120,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -142,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 118,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 112,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -132,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 110,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -135,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 125,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -140,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 128,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -150,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago Cubs',
+								price: 118,
+							},
+							{
+								name: 'Cleveland Guardians',
+								price: -141,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '5449ef37be23ee6ac886e3eeac1c0a06',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:41:00Z',
+		home_team: 'Cincinnati Reds',
+		away_team: 'St. Louis Cardinals',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: 100,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -118,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -102,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -108,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -102,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -108,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -105,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -115,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -105,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -115,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -104,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -112,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -105,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -115,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -102,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -108,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -103,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -115,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Cincinnati Reds',
+								price: -106,
+							},
+							{
+								name: 'St. Louis Cardinals',
+								price: -114,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'a24da8d05bbc2fe10050296fceac9a14',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:41:00Z',
+		home_team: 'Philadelphia Phillies',
+		away_team: 'Miami Marlins',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 154,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -184,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 157,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -172,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 157,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -172,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 150,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -178,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 152,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -172,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 150,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -185,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 153,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -182,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 148,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -180,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 150,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -180,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Miami Marlins',
+								price: 150,
+							},
+							{
+								name: 'Philadelphia Phillies',
+								price: -180,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'f27ce02f273c76ae382902690904849d',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T22:51:00Z',
+		home_team: 'Tampa Bay Rays',
+		away_team: 'Houston Astros',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -124,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -116,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -116,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -122,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 102,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -120,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 100,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -116,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -120,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 103,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -120,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 100,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -124,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Houston Astros',
+								price: -121,
+							},
+							{
+								name: 'Tampa Bay Rays',
+								price: 101,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '472811524f11ec9c8c6793286baab450',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-14T23:11:00Z',
+		home_team: 'New York Mets',
+		away_team: 'Oakland Athletics',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -178,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 150,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -172,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 157,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -172,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 157,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -185,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 154,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -178,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 150,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -190,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 155,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -179,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 151,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -175,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 155,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -190,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 160,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'New York Mets',
+								price: -182,
+							},
+							{
+								name: 'Oakland Athletics',
+								price: 150,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'f2cbdf43343be5ed9e63d6f2d12280b7',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-15T00:10:00Z',
+		home_team: 'Milwaukee Brewers',
+		away_team: 'Los Angeles Dodgers',
+		bookmakers: [
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -116,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -116,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -118,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 100,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -120,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 100,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -120,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 100,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -125,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -120,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 102,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -115,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -121,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 104,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Dodgers',
+								price: -121,
+							},
+							{
+								name: 'Milwaukee Brewers',
+								price: 101,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '45c1851f2527f3b7f12f21081359f153',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-15T00:11:00Z',
+		home_team: 'Chicago White Sox',
+		away_team: 'New York Yankees',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 205,
+							},
+							{
+								name: 'New York Yankees',
+								price: -250,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 200,
+							},
+							{
+								name: 'New York Yankees',
+								price: -250,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 206,
+							},
+							{
+								name: 'New York Yankees',
+								price: -230,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 206,
+							},
+							{
+								name: 'New York Yankees',
+								price: -230,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 205,
+							},
+							{
+								name: 'New York Yankees',
+								price: -250,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 200,
+							},
+							{
+								name: 'New York Yankees',
+								price: -245,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 200,
+							},
+							{
+								name: 'New York Yankees',
+								price: -245,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 200,
+							},
+							{
+								name: 'New York Yankees',
+								price: -245,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Chicago White Sox',
+								price: 200,
+							},
+							{
+								name: 'New York Yankees',
+								price: -240,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: '6d28d6a2595af564b8eb2a793c8beea1',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-15T01:39:00Z',
+		home_team: 'Los Angeles Angels',
+		away_team: 'Toronto Blue Jays',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -116,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -102,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -111,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: 101,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -111,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: 101,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -115,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -115,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -115,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -105,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -112,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -104,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -111,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: 101,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -112,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -106,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Los Angeles Angels',
+								price: -115,
+							},
+							{
+								name: 'Toronto Blue Jays',
+								price: -105,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+	{
+		id: 'fde719f5449975da1d3c0a2fec588e76',
+		sport_key: 'baseball_mlb',
+		sport_title: 'MLB',
+		commence_time: '2024-08-15T01:46:00Z',
+		home_team: 'San Francisco Giants',
+		away_team: 'Atlanta Braves',
+		bookmakers: [
+			{
+				key: 'fanduel',
+				title: 'FanDuel',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 110,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -130,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betonlineag',
+				title: 'BetOnline.ag',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 118,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -128,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'lowvig',
+				title: 'LowVig.ag',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 118,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -128,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'draftkings',
+				title: 'DraftKings',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 110,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -130,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'williamhill_us',
+				title: 'Caesars',
+				last_update: '2024-08-14T17:31:33Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:31:33Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 110,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -130,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betmgm',
+				title: 'BetMGM',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 105,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -125,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betus',
+				title: 'BetUS',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 117,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -127,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'mybookieag',
+				title: 'MyBookie.ag',
+				last_update: '2024-08-14T17:33:09Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:09Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 103,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -122,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'betrivers',
+				title: 'BetRivers',
+				last_update: '2024-08-14T17:33:11Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:11Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 104,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -121,
+							},
+						],
+					},
+				],
+			},
+			{
+				key: 'bovada',
+				title: 'Bovada',
+				last_update: '2024-08-14T17:33:10Z',
+				markets: [
+					{
+						key: 'h2h',
+						last_update: '2024-08-14T17:33:10Z',
+						outcomes: [
+							{
+								name: 'Atlanta Braves',
+								price: 109,
+							},
+							{
+								name: 'San Francisco Giants',
+								price: -131,
+							},
+						],
+					},
+				],
+			},
+		],
+	},
+];
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+	return (
+		<>
+			<h1 className='text-3xl font-medium text-zinc-900 dark:text-zinc-100'>Table</h1>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+			<main className='m-5'>
+				<div className='border-zinc-200 rounded-lg border p-2'>
+					<Table>
+						<TableCaption>A list of your US bookmakers</TableCaption>
+						<TableHeader>
+							<TableRow>
+								<TableHead>Scheduled</TableHead>
+								{Object.entries(bookmakerMap).map(bookmaker => (
+									<TableHead key={bookmaker[0]}>{bookmaker[1]}</TableHead>
+								))}
+							</TableRow>
+						</TableHeader>
+						<TableBody>
+							{data.map(game => (
+								<TableRow key={game.id}>
+									<TableCell>
+										<div className='flex flex-col items-start'>
+											<span>{game.home_team}</span>
+											<span>{game.away_team}</span>
+											<span>{game.commence_time}</span>
+										</div>
+									</TableCell>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+									{Object.entries(bookmakerMap).map(([key, value]) => {
+										const bookmaker = game.bookmakers.find(b => b.key === key);
+										const h2hMarket = bookmaker?.markets.find(m => m.key === 'h2h');
+										const homeTeam = h2hMarket?.outcomes.find(o => o.name === game.home_team);
+										const awayTeam = h2hMarket?.outcomes.find(o => o.name === game.away_team);
+										return (
+											<TableCell key={key}>
+												<div className='flex flex-col items-start'>
+													<span>{bookmaker?.title}</span>
+													<span>{homeTeam?.price || 'N/A'}</span>
+													<span>{awayTeam?.price || 'N/A'}</span>
+												</div>
+											</TableCell>
+										);
+									})}
+								</TableRow>
+							))}
+						</TableBody>
+						<TableFooter></TableFooter>
+					</Table>
+				</div>
+			</main>
+		</>
+	);
 }
