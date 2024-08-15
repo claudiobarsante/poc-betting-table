@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import { FaBaseball, FaBaseballBatBall } from 'react-icons/fa6';
 import { MdOutlineStadium } from 'react-icons/md';
 import { PiMedalFill } from 'react-icons/pi';
-import { bookmakerMap } from './bookmaker-map';
-import { formatOdds } from './utils/format-odds';
+import { bookmakerMap } from '../bookmaker-map';
+import { formatOdds } from '../utils/format-odds';
 
 type Game = {
     id: string;

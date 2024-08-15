@@ -9,7 +9,7 @@ import {
 } from '@/components/ui/table';
 import { data } from '@/dummy-data';
 import { bookmakerMap } from './bookmaker-map';
-import TableGamesBody from './table-body';
+import TableGamesBody from './components/table-body';
 
 export default function Home() {
     return (
