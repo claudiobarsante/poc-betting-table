@@ -42,6 +42,7 @@ type CellOdd = {
     homeTeamPricePosition: 'equal' | 'lower' | 'initial';
     awayTeamPricePosition: 'equal' | 'lower' | 'initial';
 };
+
 const TableGamesBody = ({ games }: Props) => {
     function mountOddCell(game: Game) {
         const cells: CellOdd[] = [];
