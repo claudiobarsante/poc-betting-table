@@ -1,4 +1,6 @@
+import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
+import { FaMedal } from 'react-icons/fa';
 import { bookmakerMap } from './bookmaker-map';
 
 type Game = {
@@ -90,25 +92,49 @@ const TableGamesBody = ({ games }: Props) => {
         return (
             <>
                 <TableCell key="best">
-                    <div className="flex flex-col items-start">
+                    <div className="flex flex-col items-start gap-2">
                         <div>
-                            <span>{maxOddHomeTeam.bookmakerKey}</span>
-                            <span>{maxOddHomeTeam.price}</span>
+                            <Button variant="outline" className="w-16 text-xs">
+                                {maxOddHomeTeam.price}
+                            </Button>
+                            {/* <span>{maxOddHomeTeam.bookmakerKey}</span> */}
                         </div>
                         <div>
-                            <span>{maxOddAwayTeam.bookmakerKey}</span>
-                            <span>{maxOddAwayTeam.price}</span>
+                            <Button variant="outline" className="w-16 text-xs">
+                                {maxOddAwayTeam.price}
+                            </Button>
+                            {/* <span>{maxOddAwayTeam.bookmakerKey}</span> */}
                         </div>
                     </div>
                 </TableCell>
                 {cells.map((cell) => (
                     <TableCell key={cell.bookmakerKey}>
-                        <div className="flex flex-col items-start">
+                        <div className="flex flex-col items-start gap-2">
                             <div>
-                                <span>{cell.homeTeamPrice || 'N/A'}</span>
+                                <Button
+                                    variant="outline"
+                                    className="w-16 text-xs"
+                                >
+                                    {cell.homeTeamPrice || 'N/A'}
+                                    {cell.homeTeamPrice ===
+                                        maxOddHomeTeam.price && (
+                                        <FaMedal className="text-orange-500" />
+                                    )}
+                                </Button>
+                                {/* <span>{cell.homeTeamPrice || 'N/A'}</span> */}
                             </div>
                             <div>
-                                <span>{cell.awayTeamPrice || 'N/A'}</span>
+                                <Button
+                                    variant="outline"
+                                    className="w-16 text-xs"
+                                >
+                                    {cell.awayTeamPrice || 'N/A'}{' '}
+                                    {cell.awayTeamPrice ===
+                                        maxOddAwayTeam.price && (
+                                        <FaMedal className="text-orange-500" />
+                                    )}
+                                </Button>
+                                {/* <span>{cell.awayTeamPrice || 'N/A'}</span> */}
                             </div>
                         </div>
                     </TableCell>

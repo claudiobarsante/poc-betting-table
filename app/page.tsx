@@ -19,7 +19,7 @@ export default function Home() {
             </h1>
 
             <main className="m-5">
-                <div className="rounded-lg border border-zinc-200 p-2">
+                <div className="p-2">
                     <Table>
                         <TableCaption>
                             A list of your US bookmakers
@@ -27,7 +27,7 @@ export default function Home() {
                         <TableHeader>
                             <TableRow>
                                 <TableHead>Scheduled</TableHead>
-                                <TableHead>Best</TableHead>
+                                <TableHead>Best Odd</TableHead>
                                 {Object.entries(bookmakerMap).map(
                                     (bookmaker) => (
                                         <TableHead key={bookmaker[0]}>
