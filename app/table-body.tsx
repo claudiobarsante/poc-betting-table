@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { FaMedal } from 'react-icons/fa';
+import classnames from 'classnames';
+import { PiMedalFill } from 'react-icons/pi';
 import { bookmakerMap } from './bookmaker-map';
 
 type Game = {
@@ -94,14 +95,32 @@ const TableGamesBody = ({ games }: Props) => {
                 <TableCell key="best">
                     <div className="flex flex-col items-start gap-2">
                         <div>
-                            <Button variant="outline" className="w-16 text-xs">
-                                {maxOddHomeTeam.price}
+                            <Button variant="outline" className="w-24 text-xs">
+                                <div className="flex flex-col items-center gap-1">
+                                    <p>{maxOddHomeTeam.price}</p>
+                                    <p className="text-xs text-green-500">
+                                        {
+                                            bookmakerMap[
+                                                maxOddHomeTeam.bookmakerKey
+                                            ]
+                                        }
+                                    </p>
+                                </div>
                             </Button>
                             {/* <span>{maxOddHomeTeam.bookmakerKey}</span> */}
                         </div>
                         <div>
-                            <Button variant="outline" className="w-16 text-xs">
-                                {maxOddAwayTeam.price}
+                            <Button variant="outline" className="w-24 text-xs">
+                                <div className="flex flex-col items-center gap-1">
+                                    <p>{maxOddAwayTeam.price}</p>
+                                    <p className="text-xs text-green-500">
+                                        {
+                                            bookmakerMap[
+                                                maxOddAwayTeam.bookmakerKey
+                                            ]
+                                        }
+                                    </p>
+                                </div>
                             </Button>
                             {/* <span>{maxOddAwayTeam.bookmakerKey}</span> */}
                         </div>
@@ -110,28 +129,35 @@ const TableGamesBody = ({ games }: Props) => {
                 {cells.map((cell) => (
                     <TableCell key={cell.bookmakerKey}>
                         <div className="flex flex-col items-start gap-2">
-                            <div>
+                            <div className="relative">
                                 <Button
                                     variant="outline"
-                                    className="w-16 text-xs"
+                                    className={classnames('w-16 text-xs', {
+                                        'cursor-not-allowed opacity-50':
+                                            !cell.homeTeamPrice
+                                    })}
+                                    disabled={!cell.homeTeamPrice}
                                 >
                                     {cell.homeTeamPrice || 'N/A'}
-                                    {cell.homeTeamPrice ===
-                                        maxOddHomeTeam.price && (
-                                        <FaMedal className="text-orange-500" />
-                                    )}
                                 </Button>
-                                {/* <span>{cell.homeTeamPrice || 'N/A'}</span> */}
+                                {cell.homeTeamPrice ===
+                                    maxOddHomeTeam.price && (
+                                    <PiMedalFill className="absolute right-0 top-1 text-green-500" />
+                                )}
                             </div>
-                            <div>
+                            <div className="relative">
                                 <Button
                                     variant="outline"
-                                    className="w-16 text-xs"
+                                    className={classnames('w-16 text-xs', {
+                                        'cursor-not-allowed opacity-50':
+                                            !cell.homeTeamPrice
+                                    })}
+                                    disabled={!cell.homeTeamPrice}
                                 >
                                     {cell.awayTeamPrice || 'N/A'}{' '}
                                     {cell.awayTeamPrice ===
                                         maxOddAwayTeam.price && (
-                                        <FaMedal className="text-orange-500" />
+                                        <PiMedalFill className="absolute right-0 top-1 text-green-500" />
                                     )}
                                 </Button>
                                 {/* <span>{cell.awayTeamPrice || 'N/A'}</span> */}
