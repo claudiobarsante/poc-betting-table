@@ -3,6 +3,7 @@ import { TableCell, TableRow } from '@/components/ui/table';
 import classnames from 'classnames';
 import { PiMedalFill } from 'react-icons/pi';
 import { bookmakerMap } from './bookmaker-map';
+import { formatOdds } from './utils/format-odds';
 
 type Game = {
     id: string;
@@ -98,7 +99,7 @@ const TableGamesBody = ({ games }: Props) => {
                         <div>
                             <Button variant="outline" className="w-24 text-xs">
                                 <div className="flex flex-col items-center gap-1">
-                                    <p>{maxOddHomeTeam.price}</p>
+                                    <p>{formatOdds(maxOddHomeTeam.price)}</p>
                                     <p className="text-xs text-green-500">
                                         {
                                             bookmakerMap[
@@ -113,7 +114,7 @@ const TableGamesBody = ({ games }: Props) => {
                         <div>
                             <Button variant="outline" className="w-24 text-xs">
                                 <div className="flex flex-col items-center gap-1">
-                                    <p>{maxOddAwayTeam.price}</p>
+                                    <p>{formatOdds(maxOddAwayTeam.price)}</p>
                                     <p className="text-xs text-green-500">
                                         {
                                             bookmakerMap[
@@ -129,7 +130,7 @@ const TableGamesBody = ({ games }: Props) => {
                 </TableCell>
                 {cells.map((cell) => (
                     <TableCell key={cell.bookmakerKey}>
-                        <div className="flex flex-col items-start gap-2">
+                        <div className="flex flex-col items-start gap-3">
                             <div className="relative">
                                 <Button
                                     variant="outline"
@@ -139,11 +140,13 @@ const TableGamesBody = ({ games }: Props) => {
                                     })}
                                     disabled={!cell.homeTeamPrice}
                                 >
-                                    {cell.homeTeamPrice || 'N/A'}
+                                    {(cell.homeTeamPrice &&
+                                        formatOdds(cell.homeTeamPrice)) ||
+                                        'N/A'}
                                 </Button>
                                 {cell.homeTeamPrice ===
                                     maxOddHomeTeam.price && (
-                                    <PiMedalFill className="absolute right-0 top-1 text-green-500" />
+                                    <PiMedalFill className="absolute right-1 top-1 text-green-500" />
                                 )}
                             </div>
                             <div className="relative">
@@ -155,10 +158,12 @@ const TableGamesBody = ({ games }: Props) => {
                                     })}
                                     disabled={!cell.homeTeamPrice}
                                 >
-                                    {cell.awayTeamPrice || 'N/A'}{' '}
+                                    {(cell.awayTeamPrice &&
+                                        formatOdds(cell.awayTeamPrice)) ||
+                                        'N/A'}{' '}
                                     {cell.awayTeamPrice ===
                                         maxOddAwayTeam.price && (
-                                        <PiMedalFill className="absolute right-0 top-1 text-green-500" />
+                                        <PiMedalFill className="absolute right-1 top-1 text-green-500" />
                                     )}
                                 </Button>
                                 {/* <span>{cell.awayTeamPrice || 'N/A'}</span> */}
