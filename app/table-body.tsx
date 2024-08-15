@@ -1,6 +1,8 @@
 import { Button } from '@/components/ui/button';
 import { TableCell, TableRow } from '@/components/ui/table';
 import classnames from 'classnames';
+import { FaBaseball, FaBaseballBatBall } from 'react-icons/fa6';
+import { MdOutlineStadium } from 'react-icons/md';
 import { PiMedalFill } from 'react-icons/pi';
 import { bookmakerMap } from './bookmaker-map';
 import { formatOdds } from './utils/format-odds';
@@ -180,11 +182,23 @@ const TableGamesBody = ({ games }: Props) => {
             {games.map((game) => (
                 <TableRow key={game.id}>
                     <TableCell>
-                        <div className="flex flex-col items-start">
-                            <span>{game.home_team}</span>
-                            <span>{game.away_team}</span>
-                            <span>{game.commence_time}</span>
-                        </div>
+                        <>
+                            <div className="flex flex-col items-center justify-center border border-red-400">
+                                <div className="flex items-center gap-3">
+                                    <FaBaseballBatBall className="text-blue-600" />
+                                    <span>{game.home_team}</span>
+                                </div>
+
+                                <div className="flex items-center gap-3">
+                                    <FaBaseball className="text-green-600" />{' '}
+                                    <span>{game.away_team}</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-1">
+                                <span>{game.commence_time}</span>
+                                <MdOutlineStadium />
+                            </div>
+                        </>
                     </TableCell>
                     {mountOddCell(game)}
                 </TableRow>
