@@ -1,4 +1,6 @@
 'use client';
+
+import { Button } from '@/components/ui/button';
 import {
     Table,
     TableBody,
@@ -6,15 +8,20 @@ import {
     TableFooter,
     TableHeader
 } from '@/components/ui/table';
-import { useEffect, useState } from 'react';
-//import { data } from '@/dummy-data';
 import { addWeeks } from 'date-fns';
-import TableGamesBody from './components/table-body';
+import { useEffect, useState } from 'react';
+import TableGamesBody, { Game } from './components/table-body';
 import TableGamesHeader from './components/table-games-header';
-import { formatToISOWithoutMilliseconds } from './utils/format-to-iso-without-milliseconds';
+import {
+    formatDayOfWeek,
+    formatToISOWithoutMilliseconds,
+    getDateFromISODate
+} from './utils/date-helpers';
 export default function Home() {
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState(false);
+    const [gamesSchedule, setGamesSchedule] = useState<string[]>([]);
+    const [currentGameDate, setCurrentGameDate] = useState<string>('');
 
     useEffect(() => {
         const today = new Date();
@@ -37,23 +44,61 @@ export default function Home() {
         url.search = params.toString();
 
         setIsLoading(true);
+
         fetch(url, {
             method: 'GET',
             cache: 'no-cache'
         })
             .then((response) => response.json())
             .then((data) => {
+                //const data: Game[] = dummy;
+                const schedules = new Set<string>();
+                for (let i = 0; i < data.length; i++) {
+                    schedules.add(data[i].commence_time);
+                }
+                const schedulesArray = Array.from(schedules);
+                setGamesSchedule(schedulesArray);
                 setData(data);
+                setCurrentGameDate(schedulesArray[0]);
             })
             .catch((error) => console.error('Error:', error))
             .finally(() => setIsLoading(false));
     }, []);
 
+    const handleFilterGameDate = (direction: 'previous' | 'next') => {
+        console.log('handleFilterGameDate', currentGameDate);
+        console.log('====>', gamesSchedule);
+        const totalGames = gamesSchedule.length;
+        const currentIndex = gamesSchedule.indexOf(currentGameDate);
+        // -- edge case: if current game date is the first or last, do nothing
+        if (direction === 'previous' && currentIndex - 1 < 0) return;
+        if (direction === 'next' && currentIndex + 1 >= totalGames) return;
+
+        const newIndex =
+            direction === 'previous' ? currentIndex - 1 : currentIndex + 1;
+        console.log('====', gamesSchedule[newIndex]);
+
+        setCurrentGameDate(gamesSchedule[newIndex]);
+    };
+    const filtered = data.filter(
+        (game) =>
+            getDateFromISODate(game.commence_time) ===
+            getDateFromISODate(currentGameDate)
+    );
     return (
         <>
             <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
                 Games odds table
             </h1>
+            <div className="flex items-center gap-20">
+                <Button onClick={() => handleFilterGameDate('previous')}>
+                    Previous
+                </Button>
+                <p>{currentGameDate && formatDayOfWeek(currentGameDate)}</p>
+                <Button onClick={() => handleFilterGameDate('next')}>
+                    Next
+                </Button>
+            </div>
 
             <main className="m-5">
                 <div className="p-2">
@@ -66,7 +111,9 @@ export default function Home() {
                         </TableHeader>
 
                         <TableBody>
-                            {data.length > 0 && <TableGamesBody games={data} />}
+                            {data.length > 0 && (
+                                <TableGamesBody games={filtered} />
+                            )}
                         </TableBody>
                         <TableFooter></TableFooter>
                     </Table>

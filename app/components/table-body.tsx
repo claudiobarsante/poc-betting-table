@@ -1,6 +1,7 @@
 import { TableCell, TableRow } from '@/components/ui/table';
 import { FaBaseball, FaBaseballBatBall } from 'react-icons/fa6';
 import { MdOutlineStadium } from 'react-icons/md';
+import { getHourOfDay } from '../utils/date-helpers';
 import TableBodyOddCells from './table-body-odd-cells';
 
 export type Game = {
@@ -48,7 +49,7 @@ const TableGamesBody = ({ games }: Props) => {
                                 </div>
                             </div>
                             <div className="flex items-center gap-1">
-                                <span>{game.commence_time}</span>
+                                <span>{getHourOfDay(game.commence_time)}</span>
                                 <MdOutlineStadium />
                             </div>
                         </>

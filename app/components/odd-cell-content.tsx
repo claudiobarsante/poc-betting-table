@@ -5,6 +5,7 @@ import { formatOdds } from '../utils/format-odds';
 type Props = {
     price: number | undefined;
     maxPrice: number;
+    lastUpdate: string | undefined;
 };
 
 const OddCellContent = ({ price, maxPrice }: Props) => {

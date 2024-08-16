@@ -36,10 +36,12 @@ const TableBodyOddCells = ({ game }: Props) => {
                         <OddCellContent
                             price={cell.homeTeamPrice}
                             maxPrice={maxOddHomeTeam.price}
+                            lastUpdate={cell.lastUpdate}
                         />
                         <OddCellContent
                             price={cell.awayTeamPrice}
                             maxPrice={maxOddAwayTeam.price}
+                            lastUpdate={cell.lastUpdate}
                         />
                     </div>
                 </TableCell>

@@ -12,6 +12,7 @@ type OddCell = {
     awayTeamPrice: number | undefined;
     homeTeamPricePosition: 'equal' | 'lower' | 'initial';
     awayTeamPricePosition: 'equal' | 'lower' | 'initial';
+    lastUpdate: string | undefined;
 };
 
 export type GetMaxOddsResult = {
@@ -35,6 +36,8 @@ export function getMaxOdds(game: Game): GetMaxOddsResult {
     Object.entries(bookmakerMap).map(([key, value]) => {
         const bookmaker = game.bookmakers.find((b) => b.key === key);
         const h2hMarket = bookmaker?.markets.find((m) => m.key === 'h2h');
+        const lastUpdate = h2hMarket?.last_update;
+
         const homeTeam = h2hMarket?.outcomes.find(
             (o) => o.name === game.home_team
         );
@@ -63,7 +66,8 @@ export function getMaxOdds(game: Game): GetMaxOddsResult {
             homeTeamPrice,
             awayTeamPrice,
             homeTeamPricePosition: 'initial',
-            awayTeamPricePosition: 'initial'
+            awayTeamPricePosition: 'initial',
+            lastUpdate
         });
     });
 
