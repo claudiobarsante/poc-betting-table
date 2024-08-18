@@ -1,5 +1,6 @@
 'use client';
 
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
     Table,
     TableBody,
@@ -17,6 +18,7 @@ import {
     formatToISOWithoutMilliseconds,
     getDateFromISODate
 } from './utils/date-helpers';
+
 export default function Home() {
     const [data, setData] = useState<Game[]>([]);
     const [isLoading, setIsLoading] = useState(false);
@@ -98,29 +100,30 @@ export default function Home() {
                 </figure>
                 <h1 className="text-2xl font-bold tracking-tight">Games Odd</h1>
             </div>
+            <ScrollArea className="w-full rounded-md border p-4">
+                <section>
+                    <div>
+                        <Table>
+                            <TableCaption>
+                                A list of your US bookmakers
+                            </TableCaption>
+                            <TableHeader>
+                                <TableGamesHeader
+                                    onSchedlueClick={handleFilterGameDate}
+                                    currentGameDate={currentGameDate}
+                                />
+                            </TableHeader>
 
-            <section>
-                <div>
-                    <Table>
-                        <TableCaption>
-                            A list of your US bookmakers
-                        </TableCaption>
-                        <TableHeader>
-                            <TableGamesHeader
-                                onSchedlueClick={handleFilterGameDate}
-                                currentGameDate={currentGameDate}
-                            />
-                        </TableHeader>
-
-                        <TableBody>
-                            {data.length > 0 && (
-                                <TableGamesBody games={filtered} />
-                            )}
-                        </TableBody>
-                        <TableFooter></TableFooter>
-                    </Table>
-                </div>
-            </section>
+                            <TableBody>
+                                {data.length > 0 && (
+                                    <TableGamesBody games={filtered} />
+                                )}
+                            </TableBody>
+                            <TableFooter></TableFooter>
+                        </Table>
+                    </div>
+                </section>
+            </ScrollArea>
         </>
     );
 }

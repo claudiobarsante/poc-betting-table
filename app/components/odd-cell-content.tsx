@@ -30,9 +30,17 @@ const OddCellContent = ({ price, maxPrice, lastUpdate }: Props) => {
                             })}
                             disabled={!price}
                         >
-                            {(price && formatOdds(price)) || 'N/A'}{' '}
+                            {
+                                <span
+                                    className={classnames({
+                                        'font-semibold': price === maxPrice
+                                    })}
+                                >
+                                    {(price && formatOdds(price)) || 'N/A'}
+                                </span>
+                            }
                             {price === maxPrice && (
-                                <PiMedalFill className="absolute right-1 top-1 text-green-500" />
+                                <PiMedalFill className="absolute right-1 top-1 text-green-600" />
                             )}
                         </Button>
                     </TooltipTrigger>
