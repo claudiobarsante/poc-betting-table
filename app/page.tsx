@@ -1,6 +1,5 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
 import {
     Table,
     TableBody,
@@ -15,7 +14,6 @@ import { useEffect, useState } from 'react';
 import TableGamesBody, { Game } from './components/table-body';
 import TableGamesHeader from './components/table-games-header';
 import {
-    formatDayOfWeek,
     formatToISOWithoutMilliseconds,
     getDateFromISODate
 } from './utils/date-helpers';
@@ -100,15 +98,6 @@ export default function Home() {
                 </figure>
                 <h1 className="text-2xl font-bold tracking-tight">Games Odd</h1>
             </div>
-            <div className="flex items-center gap-20">
-                <Button onClick={() => handleFilterGameDate('previous')}>
-                    Previous
-                </Button>
-                <p>{currentGameDate && formatDayOfWeek(currentGameDate)}</p>
-                <Button onClick={() => handleFilterGameDate('next')}>
-                    Next
-                </Button>
-            </div>
 
             <section>
                 <div>
@@ -117,7 +106,10 @@ export default function Home() {
                             A list of your US bookmakers
                         </TableCaption>
                         <TableHeader>
-                            <TableGamesHeader />
+                            <TableGamesHeader
+                                onSchedlueClick={handleFilterGameDate}
+                                currentGameDate={currentGameDate}
+                            />
                         </TableHeader>
 
                         <TableBody>

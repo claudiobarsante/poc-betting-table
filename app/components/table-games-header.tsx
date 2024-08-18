@@ -1,3 +1,4 @@
+import { Button } from '@/components/ui/button';
 import { TableHead, TableRow } from '@/components/ui/table';
 import {
     Tooltip,
@@ -7,11 +8,57 @@ import {
 } from '@/components/ui/tooltip';
 import Image from 'next/image';
 import Link from 'next/link';
+import { GrCaretNext, GrCaretPrevious } from 'react-icons/gr';
 import { bookmakerMap } from '../bookmaker-map';
-const TableGamesHeader = () => {
+import { formatDayOfWeek } from '../utils/date-helpers';
+
+type Props = {
+    onSchedlueClick: (direction: 'previous' | 'next') => void;
+    currentGameDate: string;
+};
+const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
     return (
         <TableRow>
-            <TableHead>Scheduled</TableHead>
+            <TableHead>
+                <div className="flex items-center justify-start">
+                    <p>Scheduled</p>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                <Button
+                                    variant="ghost"
+                                    onClick={() => onSchedlueClick('previous')}
+                                >
+                                    <GrCaretPrevious />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Previous date</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+
+                    <p className="text-gray-600">
+                        {currentGameDate && formatDayOfWeek(currentGameDate)}
+                    </p>
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger>
+                                {' '}
+                                <Button
+                                    variant="ghost"
+                                    onClick={() => onSchedlueClick('next')}
+                                >
+                                    <GrCaretNext />
+                                </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <p>Next date</p>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
+                </div>
+            </TableHead>
             <TableHead>Best Odd</TableHead>
             {Object.entries(bookmakerMap).map((bookmaker) => (
                 <TableHead key={bookmaker[0]}>
