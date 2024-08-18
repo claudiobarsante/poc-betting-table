@@ -24,7 +24,7 @@ const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
                     <p>Scheduled</p>
                     <TooltipProvider>
                         <Tooltip>
-                            <TooltipTrigger>
+                            <TooltipTrigger asChild>
                                 <Button
                                     variant="ghost"
                                     onClick={() => onSchedlueClick('previous')}
@@ -43,8 +43,7 @@ const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
                     </p>
                     <TooltipProvider>
                         <Tooltip>
-                            <TooltipTrigger>
-                                {' '}
+                            <TooltipTrigger asChild>
                                 <Button
                                     variant="ghost"
                                     onClick={() => onSchedlueClick('next')}
@@ -61,18 +60,21 @@ const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
             </TableHead>
             <TableHead>Best Odd</TableHead>
             {Object.entries(bookmakerMap).map((bookmaker) => (
-                <TableHead key={bookmaker[0]}>
+                <TableHead key={bookmaker[0]} className="border border-red-500">
                     {bookmaker[1].name ? (
                         <TooltipProvider>
                             <Tooltip>
-                                <TooltipTrigger asChild>
+                                <TooltipTrigger
+                                    asChild
+                                    className="w-15 h-10 border border-blue-500"
+                                >
                                     <figure>
                                         <Link href={`${bookmaker[1].link}`}>
                                             <Image
                                                 src={`/images/bookmaker/${bookmaker[1].image}`}
                                                 alt={`${bookmaker[1].name}`}
-                                                width={64}
-                                                height={28}
+                                                width={100}
+                                                height={100}
                                             />
                                         </Link>
                                     </figure>
