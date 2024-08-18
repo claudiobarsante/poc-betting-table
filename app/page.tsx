@@ -8,6 +8,7 @@ import {
     TableFooter,
     TableHeader
 } from '@/components/ui/table';
+import { data as dummy } from '@/dummy-data';
 import { addWeeks } from 'date-fns';
 import { useEffect, useState } from 'react';
 import TableGamesBody, { Game } from './components/table-body';
@@ -45,24 +46,24 @@ export default function Home() {
 
         setIsLoading(true);
 
-        fetch(url, {
-            method: 'GET',
-            cache: 'no-cache'
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                //const data: Game[] = dummy;
-                const schedules = new Set<string>();
-                for (let i = 0; i < data.length; i++) {
-                    schedules.add(data[i].commence_time);
-                }
-                const schedulesArray = Array.from(schedules);
-                setGamesSchedule(schedulesArray);
-                setData(data);
-                setCurrentGameDate(schedulesArray[0]);
-            })
-            .catch((error) => console.error('Error:', error))
-            .finally(() => setIsLoading(false));
+        // fetch(url, {
+        //     method: 'GET',
+        //     cache: 'no-cache'
+        // })
+        //     .then((response) => response.json())
+        //     .then((res) => {
+        const data: Game[] = dummy;
+        const schedules = new Set<string>();
+        for (let i = 0; i < data.length; i++) {
+            schedules.add(data[i].commence_time);
+        }
+        const schedulesArray = Array.from(schedules);
+        setGamesSchedule(schedulesArray);
+        setData(data);
+        setCurrentGameDate(schedulesArray[0]);
+        // })
+        // .catch((error) => console.error('Error:', error))
+        // .finally(() => setIsLoading(false));
     }, []);
 
     const handleFilterGameDate = (direction: 'previous' | 'next') => {

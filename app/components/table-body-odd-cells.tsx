@@ -19,13 +19,13 @@ const TableBodyOddCells = ({ game }: Props) => {
                     <BestOddCellContent
                         maxPrice={maxOddHomeTeam.price}
                         bookmakerTitle={
-                            bookmakerMap[maxOddHomeTeam.bookmakerKey]
+                            bookmakerMap[maxOddHomeTeam.bookmakerKey].name
                         }
                     />
                     <BestOddCellContent
                         maxPrice={maxOddAwayTeam.price}
                         bookmakerTitle={
-                            bookmakerMap[maxOddAwayTeam.bookmakerKey]
+                            bookmakerMap[maxOddAwayTeam.bookmakerKey].name
                         }
                     />
                 </div>
