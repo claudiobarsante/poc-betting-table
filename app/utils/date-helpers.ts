@@ -56,3 +56,12 @@ export function getHourOfDay(isoString: string): string {
         return isoString;
     }
 }
+
+export function formatLastUpdate(isoString: string): string {
+    try {
+        const formattedDate = format(new Date(isoString), 'MM-dd-yyyy h:mm a');
+        return formattedDate;
+    } catch (error) {
+        return isoString;
+    }
+}
