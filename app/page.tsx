@@ -10,6 +10,7 @@ import {
 } from '@/components/ui/table';
 import { data as dummy } from '@/dummy-data';
 import { addWeeks } from 'date-fns';
+import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import TableGamesBody, { Game } from './components/table-body';
 import TableGamesHeader from './components/table-games-header';
@@ -88,9 +89,17 @@ export default function Home() {
     );
     return (
         <>
-            <h1 className="text-3xl font-medium text-zinc-900 dark:text-zinc-100">
-                Games odds table
-            </h1>
+            <div className="flex items-center justify-start gap-2">
+                <figure>
+                    <Image
+                        src={`/images/ball.png`}
+                        alt={`baseball ball`}
+                        width={70}
+                        height={70}
+                    />
+                </figure>
+                <h1 className="text-2xl font-bold tracking-tight">Games Odd</h1>
+            </div>
             <div className="flex items-center gap-20">
                 <Button onClick={() => handleFilterGameDate('previous')}>
                     Previous
@@ -101,8 +110,8 @@ export default function Home() {
                 </Button>
             </div>
 
-            <section className="m-5">
-                <div className="p-2">
+            <section>
+                <div>
                     <Table>
                         <TableCaption>
                             A list of your US bookmakers
