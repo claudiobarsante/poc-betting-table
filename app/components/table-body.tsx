@@ -1,6 +1,7 @@
+import { Card, CardContent } from '@/components/ui/card';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { FaBaseball, FaBaseballBatBall } from 'react-icons/fa6';
-import { MdOutlineStadium } from 'react-icons/md';
+import { CiBaseball } from 'react-icons/ci';
+import { FaRegClock } from 'react-icons/fa';
 import { getHourOfDay } from '../utils/date-helpers';
 import TableBodyOddCells from './table-body-odd-cells';
 
@@ -36,23 +37,25 @@ const TableGamesBody = ({ games }: Props) => {
             {games.map((game) => (
                 <TableRow key={game.id}>
                     <TableCell>
-                        <>
-                            <div className="flex flex-col items-center justify-center border border-red-400">
-                                <div className="flex items-center gap-3">
-                                    <FaBaseballBatBall className="text-blue-600" />
-                                    <span>{game.home_team}</span>
+                        <Card className="shadow-2xl">
+                            <CardContent>
+                                <div className="mt-3 flex flex-col items-center justify-center gap-2">
+                                    <p className="text-sm font-bold text-gray-800">
+                                        {game.home_team}
+                                    </p>
+                                    <CiBaseball />
+                                    <p className="text-sm font-bold text-gray-800">
+                                        {game.away_team}
+                                    </p>
                                 </div>
-
-                                <div className="flex items-center gap-3">
-                                    <FaBaseball className="text-green-600" />{' '}
-                                    <span>{game.away_team}</span>
-                                </div>
+                            </CardContent>
+                            <div className="rounded-b-s flex w-full items-center justify-center gap-2 rounded-b-md bg-slate-800 p-2">
+                                <span className="mt-1 text-xs text-white">
+                                    {getHourOfDay(game.commence_time)}
+                                </span>
+                                <FaRegClock className="text-white" />
                             </div>
-                            <div className="flex items-center gap-1">
-                                <span>{getHourOfDay(game.commence_time)}</span>
-                                <MdOutlineStadium />
-                            </div>
-                        </>
+                        </Card>
                     </TableCell>
                     <TableBodyOddCells game={game} />
                 </TableRow>

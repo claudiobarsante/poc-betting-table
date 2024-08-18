@@ -101,7 +101,7 @@ export default function Home() {
                 </Button>
             </div>
 
-            <main className="m-5">
+            <section className="m-5">
                 <div className="p-2">
                     <Table>
                         <TableCaption>
@@ -119,7 +119,7 @@ export default function Home() {
                         <TableFooter></TableFooter>
                     </Table>
                 </div>
-            </main>
+            </section>
         </>
     );
 }

@@ -5,25 +5,30 @@ import './globals.css';
 import { cn } from '@/lib/utils';
 
 const fontSans = FontSans({
-	subsets: ['latin'],
-	variable: '--font-sans',
+    subsets: ['latin'],
+    variable: '--font-sans'
 });
 
 export const metadata: Metadata = {
-	title: 'Betting table',
-	description: 'Betting table poc',
+    title: 'Betting table',
+    description: 'Betting table poc'
 };
 
 export default function RootLayout({
-	children,
+    children
 }: Readonly<{
-	children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-	return (
-		<html lang='en' suppressHydrationWarning>
-			<body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable)}>
-				{children}
-			</body>
-		</html>
-	);
+    return (
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={cn(
+                    'min-h-screen bg-background font-sans antialiased',
+                    fontSans.variable
+                )}
+            >
+                <main className="px-20 pt-4">{children}</main>
+            </body>
+        </html>
+    );
 }
