@@ -4,11 +4,6 @@ type BookmakerInfo = {
     link: string;
 };
 export const bookmakerMap: Record<string, BookmakerInfo> = {
-    betonlineag: {
-        name: 'BetOnline.ag',
-        image: 'betonlineag.png',
-        link: 'https://www.betonline.ag/'
-    },
     betmgm: {
         name: 'BetMGM',
         image: 'betmgm.png',
@@ -44,25 +39,31 @@ export const bookmakerMap: Record<string, BookmakerInfo> = {
         image: 'fanduel.jpg',
         link: 'https://sportsbook.fanduel.com/'
     },
-    lowvig: {
-        name: 'LowVig.ag',
-        image: 'lowvig.png',
-        link: 'https://www.lowvig.ag'
-    },
-    mybookieag: {
-        name: 'MyBookie.ag',
-        image: 'mybookieag.png',
-        link: 'https://www.mybookie.ag/'
-    },
-    superbook: { name: 'SuperBook', image: 'superbook.png', link: '' },
-    unibet_us: {
-        name: 'Unibet',
-        image: 'unibet_us.png',
-        link: 'https://www.unibet.com/'
-    },
+
     wynnbet: {
         name: 'Wynn',
         image: 'wynnbet.png',
         link: 'https://www.wynnbet.com/'
     }
 };
+// betonlineag: {
+//     name: 'BetOnline.ag',
+//     image: 'betonlineag.png',
+//     link: 'https://www.betonline.ag/'
+// },
+// lowvig: {
+//     name: 'LowVig.ag',
+//     image: 'lowvig.png',
+//     link: 'https://www.lowvig.ag'
+// },
+// mybookieag: {
+//     name: 'MyBookie.ag',
+//     image: 'mybookieag.png',
+//     link: 'https://www.mybookie.ag/'
+// },
+// superbook: { name: 'SuperBook', image: 'superbook.png', link: '' },
+// unibet_us: {
+//     name: 'Unibet',
+//     image: 'unibet_us.png',
+//     link: 'https://www.unibet.com/'
+// },

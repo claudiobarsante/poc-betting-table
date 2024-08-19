@@ -19,7 +19,7 @@ type Props = {
 const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
     return (
         <TableRow>
-            <TableHead>
+            <TableHead className="w-[20rem]">
                 <div className="flex items-center justify-start">
                     <p>Scheduled</p>
                     <TooltipProvider>
@@ -66,7 +66,7 @@ const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
                             <Tooltip>
                                 <TooltipTrigger
                                     asChild
-                                    className="w-15 ml-1 h-10"
+                                    className="w-15 ml-2 h-10"
                                 >
                                     <div className="relative">
                                         <Link href={`${bookmaker[1].link}`}>

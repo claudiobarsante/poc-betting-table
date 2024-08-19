@@ -22,6 +22,9 @@ const config = {
             fontFamily: {
                 sans: ['var(--font-sans)', ...fontFamily.sans]
             },
+            gridTemplateColumns: {
+                appXl: '15% 70% 15%'
+            },
             colors: {
                 border: 'hsl(var(--border))',
                 input: 'hsl(var(--input))',

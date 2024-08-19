@@ -1,4 +1,5 @@
 'use client';
+import { ScrollArea } from '@/components/ui/scroll-area';
 import {
     Table,
     TableBody,
@@ -100,22 +101,26 @@ export default function Home() {
                 <h1 className="text-2xl font-bold tracking-tight">Games Odd</h1>
             </div>
 
-            {/* <ScrollArea className="h-screen w-full overflow-hidden rounded-md border p-4"> */}
-            <section>
-                <Table>
-                    <TableCaption>A list of your US bookmakers</TableCaption>
-                    <TableHeader>
-                        <TableGamesHeader
-                            onSchedlueClick={handleFilterGameDate}
-                            currentGameDate={currentGameDate}
-                        />
-                    </TableHeader>
-                    <TableBody>
-                        {data.length > 0 && <TableGamesBody games={filtered} />}
-                    </TableBody>
-                </Table>
-            </section>
-            {/* </ScrollArea> */}
+            <ScrollArea className="w-auto overflow-hidden">
+                <section>
+                    <Table className="max-w-[80rem]">
+                        <TableCaption>
+                            A list of your US bookmakers
+                        </TableCaption>
+                        <TableHeader>
+                            <TableGamesHeader
+                                onSchedlueClick={handleFilterGameDate}
+                                currentGameDate={currentGameDate}
+                            />
+                        </TableHeader>
+                        <TableBody>
+                            {data.length > 0 && (
+                                <TableGamesBody games={filtered} />
+                            )}
+                        </TableBody>
+                    </Table>
+                </section>
+            </ScrollArea>
         </>
     );
 }

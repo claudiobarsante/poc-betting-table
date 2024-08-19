@@ -29,7 +29,9 @@ export default function RootLayout({
                 )}
             >
                 <QueryClientProvider>
-                    <main className="px-20 pt-4">{children}</main>
+                    <div className="grid-cols-appXl grid">
+                        <main className="col-start-2 pt-4">{children}</main>
+                    </div>
                 </QueryClientProvider>
             </body>
         </html>
