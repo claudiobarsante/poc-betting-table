@@ -1,0 +1,41 @@
+ useEffect(() => {
+        const today = new Date();
+        const todayISO = formatToISOWithoutMilliseconds(today);
+        // Add one week to the current date
+        const nextWeek = addWeeks(today, 1);
+        const nextWeekISO = formatToISOWithoutMilliseconds(nextWeek);
+
+        const url = new URL(`${process.env.NEXT_PUBLIC_BASE_ENDPOINT}`);
+
+        let params = new URLSearchParams(url.search);
+        params.append('apiKey', `${process.env.NEXT_PUBLIC_ODDS_API_KEY}`);
+        params.append('regions', 'us');
+        params.append('markets', 'h2h');
+        params.append('dateFormat', 'iso');
+        params.append('oddsFormat', 'american');
+        params.append('commenceTimeFrom', todayISO);
+        params.append('commenceTimeTo', nextWeekISO);
+
+        url.search = params.toString();
+
+        setIsLoading(true);
+
+        // fetch(url, {
+        //     method: 'GET',
+        //     cache: 'no-cache'
+        // })
+        //     .then((response) => response.json())
+        //     .then((res) => {
+        const data: Game[] = dummy;
+        const schedules = new Set<string>();
+        for (let i = 0; i < data.length; i++) {
+            schedules.add(data[i].commence_time);
+        }
+        const schedulesArray = Array.from(schedules);
+        setGamesSchedule(schedulesArray);
+        setData(data);
+        setCurrentGameDate(schedulesArray[0]);
+        // })
+        // .catch((error) => console.error('Error:', error))
+        // .finally(() => setIsLoading(false));
+    }, []);

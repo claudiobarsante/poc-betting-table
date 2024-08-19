@@ -3,6 +3,7 @@ import { Inter as FontSans } from 'next/font/google';
 import './globals.css';
 
 import { cn } from '@/lib/utils';
+import QueryClientProvider from './providers/query-client-provider';
 
 const fontSans = FontSans({
     subsets: ['latin'],
@@ -27,7 +28,9 @@ export default function RootLayout({
                     fontSans.variable
                 )}
             >
-                <main className="px-20 pt-4">{children}</main>
+                <QueryClientProvider>
+                    <main className="px-20 pt-4">{children}</main>
+                </QueryClientProvider>
             </body>
         </html>
     );
