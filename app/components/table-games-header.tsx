@@ -60,24 +60,24 @@ const TableGamesHeader = ({ onSchedlueClick, currentGameDate }: Props) => {
             </TableHead>
             <TableHead>Best Odd</TableHead>
             {Object.entries(bookmakerMap).map((bookmaker) => (
-                <TableHead key={bookmaker[0]} className="border border-red-500">
+                <TableHead key={bookmaker[0]} className="w-[5rem] p-0">
                     {bookmaker[1].name ? (
                         <TooltipProvider>
                             <Tooltip>
                                 <TooltipTrigger
                                     asChild
-                                    className="w-15 h-10 border border-blue-500"
+                                    className="w-15 ml-1 h-10"
                                 >
-                                    <figure>
+                                    <div className="relative">
                                         <Link href={`${bookmaker[1].link}`}>
                                             <Image
                                                 src={`/images/bookmaker/${bookmaker[1].image}`}
                                                 alt={`${bookmaker[1].name}`}
-                                                width={100}
-                                                height={100}
+                                                fill
+                                                className="rounded-md"
                                             />
                                         </Link>
-                                    </figure>
+                                    </div>
                                 </TooltipTrigger>
                                 <TooltipContent>
                                     {bookmaker[1].name}
