@@ -11,13 +11,17 @@ import { TbClockHour3 } from 'react-icons/tb';
 import { formatLastUpdate } from '../utils/date-helpers';
 import { formatOdds } from '../utils/format-odds';
 
-type Props = {
+export type OddCellContentProps = {
     price: number | undefined;
     maxPrice: number;
     lastUpdate: string | undefined;
 };
 
-const OddCellContent = ({ price, maxPrice, lastUpdate }: Props) => {
+const OddCellContent = ({
+    price,
+    maxPrice,
+    lastUpdate
+}: OddCellContentProps) => {
     return (
         <div className="relative">
             <TooltipProvider>
@@ -40,7 +44,10 @@ const OddCellContent = ({ price, maxPrice, lastUpdate }: Props) => {
                                 </span>
                             }
                             {price === maxPrice && (
-                                <PiMedalFill className="absolute right-1 top-1 text-green-600" />
+                                <PiMedalFill
+                                    data-testid="max-odd-medal"
+                                    className="absolute right-1 top-1 text-green-600"
+                                />
                             )}
                         </Button>
                     </TooltipTrigger>
