@@ -5,6 +5,12 @@ export default defineConfig({
     plugins: [react()],
     test: {
         environment: 'jsdom',
-        globals: true
+        globals: true,
+        setupFiles: './vitest-setup.ts'
+    },
+    resolve: {
+        alias: {
+            '@': '/' // Ensure coorect importing in tests
+        }
     }
 });
