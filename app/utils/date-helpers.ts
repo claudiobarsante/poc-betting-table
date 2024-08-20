@@ -1,8 +1,9 @@
 import { format, parseISO } from 'date-fns';
 export function formatToISOWithoutMilliseconds(date: Date): string {
-    if (!date) return '';
-
     try {
+        const isDateValid = Date.parse(date.toISOString());
+        if (isNaN(isDateValid)) return '';
+
         return (
             date.getUTCFullYear() +
             '-' +
@@ -49,6 +50,7 @@ export function formatDayOfWeek(isoString: string): string {
 export function getHourOfDay(isoString: string): string {
     try {
         const date = parseISO(isoString);
+
         const formattedTime = format(date, 'h:mm aa');
 
         return formattedTime;
