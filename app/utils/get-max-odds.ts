@@ -70,7 +70,7 @@ export function getMaxOdds(game: Game): GetMaxOddsResult {
             lastUpdate
         });
     });
-
+    console.log('cells', cells);
     return {
         maxOddHomeTeam,
         maxOddAwayTeam,
